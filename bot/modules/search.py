@@ -169,7 +169,7 @@ def _search(key, site, message, method):
         msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>"
     link = _getResult(search_results, key, message, method)
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("🔎 VIEW", link)
+    buttons.buildbutton("👁️ VIEW", link)
     button = InlineKeyboardMarkup(buttons.build_menu(1))
     editMessage(msg, message, button)
     if not method.startswith('api'):
@@ -227,7 +227,7 @@ def _getResult(search_results, key, message, method):
     if msg != "":
         telegraph_content.append(msg)
 
-    editMessage(f"<b>Creating</b> {len(telegraph_content)} <b>Telegraph pages.</b>", message)
+    editMessage(f"<b>📝 Creating</b> {len(telegraph_content)} <b>Telegraph pages.</b>", message)
     path = [telegraph.create_page(
                 title='Mirror-leech-bot Torrent Search',
                 content=content
