@@ -20,7 +20,7 @@ def authorize(update, context):
             AUTHORIZED_CHATS.add(user_id)
         else:
             AUTHORIZED_CHATS.add(user_id)
-            msg = 'User Authorized'
+            msg = 'User Authorized ✅'
     elif reply_message is None:
         # Trying to authorize a chat
         chat_id = update.effective_chat.id
@@ -31,7 +31,7 @@ def authorize(update, context):
             AUTHORIZED_CHATS.add(chat_id)
         else:
             AUTHORIZED_CHATS.add(chat_id)
-            msg = 'Chat Authorized'
+            msg = 'Chat Authorized ✅'
     else:
         # Trying to authorize someone by replying
         user_id = reply_message.from_user.id
@@ -147,7 +147,7 @@ def sendAuthChats(update, context):
     user = sudo = ''
     user += '\n'.join(f"<code>{uid}</code>" for uid in AUTHORIZED_CHATS)
     sudo += '\n'.join(f"<code>{uid}</code>" for uid in SUDO_USERS)
-    sendMessage(f'<b><u>Authorized Chats:</u></b>\n{user}\n<b><u>Sudo Users:</u></b>\n{sudo}', context.bot, update.message)
+    sendMessage(f'<b><u>Authorized Chats☢️:</u></b>\n{user}\n<b><u>Sudo Users:</u></b>\n{sudo}', context.bot, update.message)
 
 
 send_auth_handler = CommandHandler(command=BotCommands.AuthorizedUsersCommand, callback=sendAuthChats,
