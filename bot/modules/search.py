@@ -54,7 +54,7 @@ def torser(update, context):
     if SEARCH_API_LINK is  None and SEARCH_PLUGINS is None:
         sendMessage("No API link or search PLUGINS added for this function", context.bot, update.message)
     elif len(key) == 1 and SEARCH_API_LINK is None:
-        sendMessage("Send a search key along with command", context.bot, update.message)
+        sendMessage("📣 Send a search key along with command", context.bot, update.message)
     elif len(key) == 1:
         buttons.sbutton('Trending', f"torser {user_id} apitrend")
         buttons.sbutton('Recent', f"torser {user_id} apirecent")
@@ -107,13 +107,13 @@ def torserbut(update, context):
                     endpoint = 'Recent'
                 editMessage(f"<b>Listing {endpoint} Items...\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
             else:
-                editMessage(f"<b>Searching for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
+                editMessage(f"<b>🔮 Searching for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
         else:
-            editMessage(f"<b>Searching for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>", message)
+            editMessage(f"<b>🔮 Searching for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>", message)
         Thread(target=_search, args=(key, site, message, method)).start()
     else:
         query.answer()
-        editMessage("Search has been canceled!", message)
+        editMessage("🔮 Search has been canceled!", message)
 
 def _search(key, site, message, method):
     if method.startswith('api'):
